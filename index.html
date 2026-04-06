@@ -826,6 +826,20 @@ footer{
   .cta{padding:130px 0;}
   .diff{padding:100px 0;}
 
+  .exp-intro{margin-bottom:60px;max-width:760px;}
+
+  /* experience wider desktop grid */
+  .exp-grid{
+    display:grid;
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:18px;
+  }
+  .exp-grid .ec{flex:none;min-height:100%;}
+  .ec{padding:42px 38px;}
+  .ec-icon{font-size:28px;margin-bottom:18px;}
+  .ec-title{font-size:24px;}
+  .ec-body{font-size:14px;line-height:1.78;}
+
   /* story two-col */
   .story-card{display:grid;grid-template-columns:5fr 4fr;}
   .si-right{border-top:none;border-left:1px solid rgba(54,159,121,.2);}
@@ -835,20 +849,6 @@ footer{
   /* compare side by side */
   .cmp-cols{display:grid;grid-template-columns:1fr 1fr;gap:0;align-items:start;}
   .cmp-good::before{display:block;}
-
-  /* experience grid */
-  .exp-grid{
-    display:grid;
-    grid-template-columns:repeat(12,1fr);
-    gap:3px;
-  }
-  .exp-grid .ec{flex:none;}
-  .ec.a{grid-column:1/5;}
-  .ec.b{grid-column:5/9;}
-  .ec.c{grid-column:9/13;}
-  .ec.d{grid-column:1/6;}
-  .ec.e{grid-column:6/9;}
-  .ec.f{grid-column:9/13;}
 
   /* friday sticky layout */
   .friday .wrap>div{display:grid;grid-template-columns:1fr 1.6fr;gap:80px;align-items:start;}
