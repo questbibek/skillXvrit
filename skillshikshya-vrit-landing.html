@@ -1,0 +1,1389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SkillShikshya × Vrit — You Don't Just Learn. You Work.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+/* ════════════════════════════════════════════
+   TOKENS
+════════════════════════════════════════════ */
+:root{
+  --w:     #ffffff;
+  --off:   #f8f8f8;
+  --smoke: #f1f1f1;
+  --bd:    #e8e8e8;
+  --ink:   #0c0c0c;
+  --ink2:  #111827;
+  --muted: #6b7280;
+  --vrit:  #3657e7;
+  --vd:    #1e35c4;
+  --vl:    #eef1fd;
+  --skill: #369f79;
+  --sd:    #1f6649;
+  --sl:    #eaf7f2;
+}
+
+/* ════════════════════════════════════════════
+   BASE — mobile first
+════════════════════════════════════════════ */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  background:var(--w);color:var(--ink);
+  font-family:'DM Sans',sans-serif;
+  font-size:16px;line-height:1.65;
+  overflow-x:hidden;
+}
+img{max-width:100%;display:block}
+
+/* ════════════════════════════════════════════
+   NAV
+════════════════════════════════════════════ */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:999;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:14px 20px;
+  background:rgba(255,255,255,.96);
+  backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--bd);
+  transition:padding .3s,box-shadow .3s;
+}
+nav.scrolled{padding:10px 20px;box-shadow:0 2px 20px rgba(0,0,0,.06);}
+
+.nav-brand{display:flex;align-items:center;gap:8px;}
+.lp{
+  font-family:'Space Mono',monospace;
+  font-size:10px;font-weight:700;letter-spacing:.05em;
+  padding:5px 11px;border-radius:4px;
+}
+.lp-v{background:var(--vrit);color:#fff;}
+.lp-x{font-family:'Bebas Neue',cursive;font-size:18px;color:#ccc;}
+.lp-s{background:var(--skill);color:#fff;}
+
+.nav-apply{
+  font-family:'Space Mono',monospace;font-size:9px;font-weight:700;
+  letter-spacing:.1em;text-transform:uppercase;
+  padding:10px 18px;border-radius:4px;
+  background:var(--vrit);color:#fff;text-decoration:none;
+  white-space:nowrap;
+  transition:background .2s,box-shadow .2s;
+}
+.nav-apply:hover{background:var(--vd);box-shadow:0 4px 16px rgba(54,87,231,.3);}
+
+/* hide nav links on mobile — shown on desktop */
+.nav-links{display:none;}
+
+/* ════════════════════════════════════════════
+   HERO — mobile stack, desktop side by side
+════════════════════════════════════════════ */
+.hero{
+  padding-top:60px;
+  display:flex;flex-direction:column;
+  min-height:100svh;
+}
+
+.hero-l{
+  padding:48px 24px 40px;
+  display:flex;flex-direction:column;justify-content:center;
+  background:#fff;position:relative;flex:1;
+}
+.hero-l::before{
+  content:'';position:absolute;top:0;left:0;
+  width:3px;height:100%;
+  background:linear-gradient(180deg,var(--vrit),transparent 80%);
+}
+
+.tag{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:'Space Mono',monospace;font-size:9px;font-weight:700;
+  letter-spacing:.15em;text-transform:uppercase;
+  color:var(--vrit);margin-bottom:24px;
+}
+.tag-dot{
+  width:7px;height:7px;border-radius:50%;background:var(--vrit);
+  animation:pulse 2s ease-in-out infinite;
+}
+@keyframes pulse{
+  0%,100%{box-shadow:0 0 0 0 rgba(54,87,231,.4)}
+  50%{box-shadow:0 0 0 7px rgba(54,87,231,0)}
+}
+
+.hero-h1{
+  font-family:'Bebas Neue',cursive;
+  font-size:clamp(58px,14vw,114px);
+  line-height:.88;letter-spacing:.01em;
+  color:var(--ink);margin-bottom:10px;
+}
+.hero-h1 em{font-style:normal;display:block;}
+.hero-h1 .hs{color:var(--skill);}
+.hero-h1 .hv{color:var(--vrit);}
+
+.hero-hook{
+  font-family:'Bebas Neue',cursive;
+  font-size:clamp(16px,4.5vw,28px);
+  line-height:1.2;letter-spacing:.03em;
+  color:var(--muted);margin-bottom:22px;
+  opacity:.65;
+}
+
+.hero-sub{
+  font-size:15px;font-weight:400;color:var(--muted);
+  max-width:480px;margin-bottom:36px;line-height:1.78;
+}
+.hero-sub strong{color:var(--ink);font-weight:600;}
+
+.hero-acts{display:flex;align-items:center;gap:14px;flex-wrap:wrap;}
+
+.btn-primary{
+  background:var(--vrit);color:#fff;
+  padding:14px 28px;border-radius:4px;
+  font-family:'Space Mono',monospace;
+  font-size:10px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;
+  text-decoration:none;display:inline-block;
+  transition:background .2s,transform .2s,box-shadow .2s;
+}
+.btn-primary:hover{
+  background:var(--vd);transform:translateY(-2px);
+  box-shadow:0 8px 24px rgba(54,87,231,.3);
+}
+
+.btn-ghost{
+  display:flex;align-items:center;gap:8px;
+  font-family:'Space Mono',monospace;font-size:10px;font-weight:700;
+  letter-spacing:.09em;text-transform:uppercase;
+  color:var(--muted);text-decoration:none;
+  transition:gap .2s,color .2s;
+}
+.btn-ghost:hover{gap:14px;color:var(--ink);}
+
+/* hero right panel — hidden on mobile, shown desktop */
+.hero-r{
+  background:var(--ink);
+  display:none;
+  position:relative;overflow:hidden;
+  flex-direction:column;align-items:stretch;justify-content:flex-end;
+}
+.hr-grid{
+  position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
+  background-size:48px 48px;
+}
+.hr-ghost{
+  position:absolute;top:38%;left:50%;
+  transform:translate(-50%,-50%);
+  font-family:'Bebas Neue',cursive;font-size:200px;line-height:1;
+  color:transparent;
+  -webkit-text-stroke:1px rgba(54,87,231,.1);
+  white-space:nowrap;pointer-events:none;letter-spacing:.04em;
+}
+.hr-side-text{
+  font-family:'Bebas Neue',cursive;
+  font-size:12px;letter-spacing:.26em;text-transform:uppercase;
+  color:rgba(255,255,255,.1);writing-mode:vertical-rl;
+  position:absolute;right:20px;top:48px;
+}
+.stats-grid{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:1px;z-index:3;position:relative;margin:auto 0 0;
+}
+.sc{
+  padding:32px 28px;
+  background:rgba(255,255,255,.03);
+  border-top:1px solid rgba(255,255,255,.07);
+  transition:background .25s;
+}
+.sc:hover{background:rgba(54,87,231,.08);}
+.sc-n{font-family:'Bebas Neue',cursive;font-size:54px;line-height:1;margin-bottom:6px;}
+.sc-n.sv{color:var(--vrit);}
+.sc-n.ss{color:var(--skill);}
+.sc-l{font-family:'Space Mono',monospace;font-size:9px;color:rgba(255,255,255,.35);line-height:1.6;}
+.hr-bar{
+  background:linear-gradient(90deg,var(--vrit),var(--skill));
+  padding:20px 28px;display:flex;align-items:center;justify-content:space-between;
+  z-index:3;position:relative;
+}
+.hr-bar-t{font-family:'Bebas Neue',cursive;font-size:20px;letter-spacing:.07em;color:#fff;}
+.hr-bar-s{font-family:'Space Mono',monospace;font-size:8px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.55);}
+
+/* mobile stats strip — shows instead of right panel on mobile */
+.hero-stats-mobile{
+  display:grid;grid-template-columns:repeat(2,1fr);
+  background:var(--ink);
+}
+.hsm{
+  padding:24px 20px;border:1px solid rgba(255,255,255,.06);
+}
+.hsm-n{font-family:'Bebas Neue',cursive;font-size:42px;line-height:1;margin-bottom:4px;}
+.hsm-n.sv{color:var(--vrit);}
+.hsm-n.ss{color:var(--skill);}
+.hsm-l{font-family:'Space Mono',monospace;font-size:9px;color:rgba(255,255,255,.4);line-height:1.5;}
+.hero-gradient-bar{
+  background:linear-gradient(90deg,var(--vrit),var(--skill));
+  padding:14px 20px;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.hgb-t{font-family:'Bebas Neue',cursive;font-size:18px;letter-spacing:.06em;color:#fff;}
+.hgb-s{font-family:'Space Mono',monospace;font-size:8px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.6);}
+
+/* ════════════════════════════════════════════
+   MARQUEE
+════════════════════════════════════════════ */
+.mq-wrap{overflow:hidden;border-top:1px solid var(--bd);border-bottom:1px solid var(--bd);}
+.mq-row{
+  display:flex;width:max-content;
+  animation:mq 28s linear infinite;
+  padding:12px 0;
+}
+.mq-row.rev{animation-direction:reverse;animation-duration:22s;}
+.mq-row.vrit{background:var(--vrit);}
+.mq-row.dark{background:var(--vrit);}
+.mqi{
+  font-family:'Bebas Neue',cursive;font-size:15px;letter-spacing:.07em;
+  color:rgba(255,255,255,.88);white-space:nowrap;padding:0 28px;
+}
+.mqs{color:rgba(255,255,255,.28);}
+@keyframes mq{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+/* ════════════════════════════════════════════
+   SHARED LAYOUT HELPERS
+════════════════════════════════════════════ */
+.wrap{max-width:1360px;margin:0 auto;padding:0 24px;}
+
+.section{padding:72px 0;}
+
+.eyebrow{
+  font-family:'Space Mono',monospace;
+  font-size:9px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
+  display:flex;align-items:center;gap:10px;margin-bottom:16px;
+}
+.eyebrow::after{content:'';height:1.5px;width:28px;}
+.ey-v{color:var(--vrit);}    .ey-v::after{background:var(--vrit);}
+.ey-s{color:var(--skill);}   .ey-s::after{background:var(--skill);}
+.ey-w{color:rgba(255,255,255,.4);} .ey-w::after{background:rgba(255,255,255,.2);}
+
+/* ════════════════════════════════════════════
+   DIFF INTERSTITIAL
+════════════════════════════════════════════ */
+.diff{background:var(--smoke);padding:64px 0;border-top:1px solid var(--bd);border-bottom:1px solid var(--bd);}
+
+.diff-inner{
+  display:flex;flex-direction:column;gap:0;
+}
+.diff-col{padding:32px 24px;}
+.diff-col.good{border-top:1px solid rgba(255,255,255,.07);}
+
+.diff-pill{
+  font-family:'Space Mono',monospace;font-size:8px;font-weight:700;
+  letter-spacing:.14em;text-transform:uppercase;
+  padding:4px 12px;border-radius:100px;
+  display:inline-block;margin-bottom:16px;
+}
+.dp-bad{background:var(--bd);color:var(--muted);}
+.dp-good{background:var(--vl);color:var(--vrit);}
+
+.diff-big{
+  font-family:'Bebas Neue',cursive;
+  font-size:clamp(48px,12vw,88px);
+  line-height:.9;letter-spacing:.01em;
+  color:var(--bd);margin-bottom:16px;
+}
+.diff-big.bright{color:var(--ink);}
+
+.diff-desc{font-size:14px;color:var(--muted);line-height:1.75;max-width:340px;}
+.diff-col.good .diff-desc{color:var(--ink);}
+
+/* ════════════════════════════════════════════
+   STORY
+════════════════════════════════════════════ */
+.story{background:var(--w);padding:72px 0;}
+
+.story-card{
+  border:1px solid var(--bd);border-radius:12px;overflow:hidden;
+}
+.si-left{padding:40px 28px;background:#fff;}
+.si-headline{
+  font-family:'Bebas Neue',cursive;
+  font-size:clamp(36px,8vw,64px);
+  line-height:.92;letter-spacing:.01em;margin-bottom:24px;
+}
+.si-headline .hs{color:var(--skill);}
+.si-body{font-size:15px;font-weight:400;color:var(--muted);line-height:1.82;}
+.si-body p+p{margin-top:18px;}
+.si-body strong{color:var(--ink);font-weight:600;}
+
+.si-right{
+  padding:40px 28px;background:var(--sl);
+  display:flex;flex-direction:column;justify-content:space-between;
+  position:relative;overflow:hidden;border-top:1px solid rgba(255,255,255,.06);
+}
+.si-right::before{
+  content:'"';font-family:'Bebas Neue',cursive;font-size:220px;
+  color:rgba(54,159,121,.08);position:absolute;top:-30px;left:0;
+  line-height:1;pointer-events:none;
+}
+.si-qt{
+  font-family:'Bebas Neue',cursive;
+  font-size:clamp(20px,5vw,34px);
+  line-height:1.12;letter-spacing:.015em;color:var(--ink);
+  position:relative;z-index:1;margin-bottom:16px;
+}
+.si-qt .hs{color:var(--skill);}
+.si-qs{
+  font-family:'Space Mono',monospace;font-size:8px;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--skill);
+  position:relative;z-index:1;margin-bottom:32px;
+}
+.si-nums{
+  display:grid;grid-template-columns:1fr 1fr;gap:2px;
+  position:relative;z-index:1;
+}
+.sin{padding:16px 0;border-top:1px solid rgba(54,159,121,.15);}
+.sin-n{font-family:'Bebas Neue',cursive;font-size:36px;line-height:1;color:var(--vrit);}
+.sin-l{font-family:'Space Mono',monospace;font-size:8px;color:var(--sd);opacity:.6;line-height:1.5;}
+
+/* ════════════════════════════════════════════
+   COMPARE
+════════════════════════════════════════════ */
+.compare{background:var(--off);padding:72px 0;border-top:1px solid var(--bd);border-bottom:1px solid var(--bd);}
+
+.cmp-hd{text-align:center;margin-bottom:48px;}
+.cmp-title{
+  font-family:'Bebas Neue',cursive;
+  font-size:clamp(34px,8vw,72px);
+  line-height:.92;letter-spacing:.01em;color:var(--ink);margin-bottom:16px;
+}
+.cmp-title em{font-style:normal;}
+.ct-m{color:var(--muted);}
+.ct-s{color:var(--vrit);}
+.cmp-sub{font-size:15px;color:var(--muted);max-width:480px;margin:0 auto;line-height:1.78;}
+
+/* stacked on mobile, side by side on desktop */
+.cmp-cols{display:flex;flex-direction:column;gap:16px;}
+
+.cmp-col{border-radius:12px;overflow:hidden;}
+.cmp-bad{border:1px solid var(--bd);background:#fff;}
+.cmp-good{border:2px solid var(--skill);background:#fff;position:relative;}
+.cmp-good::before{
+  content:'RECOMMENDED';
+  position:absolute;top:-1px;left:50%;transform:translateX(-50%);
+  font-family:'Space Mono',monospace;font-size:8px;font-weight:700;
+  letter-spacing:.12em;text-transform:uppercase;
+  background:var(--skill);color:#fff;
+  padding:4px 14px;border-radius:0 0 6px 6px;z-index:2;
+}
+
+.cmp-col-hd{padding:32px 28px 24px;}
+.cmp-tag{
+  font-family:'Space Mono',monospace;font-size:8px;font-weight:700;
+  letter-spacing:.14em;text-transform:uppercase;
+  padding:4px 12px;border-radius:100px;
+  display:inline-block;margin-bottom:16px;
+}
+.ct-bad{background:var(--smoke);color:var(--muted);}
+.ct-good{background:var(--sl);color:var(--sd);}
+.cmp-icon{font-size:28px;margin-bottom:12px;}
+.cmp-name{
+  font-family:'Bebas Neue',cursive;font-size:24px;letter-spacing:.03em;margin-bottom:8px;
+}
+.cmp-bad .cmp-name{color:var(--muted);}
+.cmp-good .cmp-name{color:var(--ink);}
+.cmp-desc{font-size:13px;color:var(--muted);line-height:1.65;}
+
+.cmp-list{list-style:none;border-top:1px solid var(--bd);}
+.cmp-item{
+  display:flex;gap:14px;padding:16px 28px;
+  border-bottom:1px solid var(--bd);transition:background .2s;
+}
+.cmp-bad .cmp-item:hover{background:var(--off);}
+.cmp-good .cmp-item:hover{background:var(--sl);}
+.cmp-good .cmp-list{border-color:rgba(54,159,121,.15);}
+.cmp-good .cmp-item{border-color:rgba(54,159,121,.1);}
+
+.mk{
+  width:20px;height:20px;border-radius:50%;
+  flex-shrink:0;margin-top:2px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:10px;font-weight:700;
+}
+.mk-bad{background:var(--smoke);color:#ccc;border:1px solid var(--bd);}
+.mk-good{background:var(--skill);color:#fff;}
+
+.cmp-item strong{display:block;font-size:13px;font-weight:600;margin-bottom:4px;line-height:1.3;}
+.cmp-bad .cmp-item strong{color:var(--muted);}
+.cmp-good .cmp-item strong{color:var(--ink);}
+.cmp-item p{font-size:12px;line-height:1.65;margin:0;}
+.cmp-bad .cmp-item p{color:#bbb;}
+.cmp-good .cmp-item p{color:var(--muted);}
+
+.cmp-verdict{margin-top:40px;}
+.cmp-vinner{
+  background:var(--vl);border:1px solid rgba(54,87,231,.2);border-radius:12px;
+  padding:40px 28px;text-align:center;
+  position:relative;overflow:hidden;
+}
+.cmp-vinner::before{display:none;}
+.cv-lbl{
+  font-family:'Space Mono',monospace;font-size:8px;font-weight:700;
+  letter-spacing:.16em;text-transform:uppercase;
+  color:var(--skill);margin-bottom:16px;position:relative;z-index:1;
+}
+.cv-txt{
+  font-family:'Bebas Neue',cursive;
+  font-size:clamp(22px,6vw,48px);
+  line-height:1.05;color:var(--ink);position:relative;z-index:1;
+  margin-bottom:28px;
+}
+
+/* ════════════════════════════════════════════
+   EXPERIENCE — dark section
+════════════════════════════════════════════ */
+.experience{background:var(--off);padding:72px 0;border-top:1px solid var(--bd);}
+
+.exp-intro{margin-bottom:48px;}
+.exp-headline{
+  font-family:'Bebas Neue',cursive;
+  font-size:clamp(40px,10vw,80px);
+  line-height:.9;color:var(--ink);letter-spacing:.01em;margin-bottom:16px;
+}
+.exp-headline .hv{color:var(--vrit);}
+.exp-sub{color:var(--muted);font-size:15px;line-height:1.8;max-width:520px;}
+.exp-sub strong{color:var(--ink);font-weight:600;}
+
+/* single column on mobile, staggered grid on desktop */
+.exp-grid{display:flex;flex-direction:column;gap:2px;}
+
+.ec{
+  padding:32px 28px;
+  border:1px solid var(--bd);
+  background:#fff;
+  border-radius:8px;
+  transition:background .25s,border-color .25s,box-shadow .25s;
+  position:relative;overflow:hidden;
+}
+.ec::after{
+  content:'';position:absolute;bottom:0;left:0;right:0;height:2px;
+  background:var(--vrit);transform:scaleX(0);transform-origin:left;
+  transition:transform .3s ease;
+}
+.ec:hover::after{transform:scaleX(1);}
+.ec:hover{background:var(--vl);border-color:rgba(54,87,231,.25);box-shadow:0 4px 20px rgba(54,87,231,.08);}
+
+.ec.solid-v{background:var(--vrit);border-color:var(--vrit);border-radius:8px;}
+.ec.solid-v::after{display:none;}
+.ec.solid-v:hover{background:var(--vd);}
+.ec.solid-s{background:var(--sl);border-color:rgba(54,159,121,.3);border-radius:8px;}
+.ec.solid-s:hover{background:rgba(54,159,121,.18);border-color:rgba(54,159,121,.45);}
+
+.ec-icon{font-size:24px;margin-bottom:16px;}
+.ec-title{
+  font-family:'Bebas Neue',cursive;font-size:22px;letter-spacing:.03em;
+  color:var(--ink);margin-bottom:8px;
+}
+.ec-body{font-size:13px;color:var(--muted);line-height:1.72;}
+.ec.solid-v .ec-title{color:#fff;}.ec.solid-v .ec-body{color:rgba(255,255,255,.78);}
+
+.ec.solid-s .ec-title{color:var(--ink);}.ec.solid-s .ec-body{color:var(--sd);opacity:.85;}
+/* ════════════════════════════════════════════
+   FRIDAY
+════════════════════════════════════════════ */
+.friday{background:#fff;padding:72px 0;}
+
+.fri-head{margin-bottom:40px;}
+.fri-big{
+  font-family:'Bebas Neue',cursive;
+  font-size:clamp(64px,16vw,120px);
+  line-height:.85;letter-spacing:.01em;margin-bottom:20px;
+}
+.fri-big .day{color:var(--skill);display:block;position:relative;}
+.fri-big .day::after{
+  content:'';position:absolute;bottom:3px;left:0;
+  width:100%;height:3px;
+  background:linear-gradient(90deg,var(--skill),transparent);
+  border-radius:2px;
+}
+
+.fri-intro{font-size:15px;color:var(--muted);line-height:1.8;margin-bottom:24px;}
+.fri-intro strong{color:var(--ink);}
+
+.fri-tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:40px;}
+.ft{
+  font-family:'Space Mono',monospace;font-size:8px;font-weight:700;
+  letter-spacing:.1em;text-transform:uppercase;
+  padding:6px 12px;border-radius:100px;
+}
+.ft-n{background:var(--smoke);color:var(--ink);}
+.ft-s{background:var(--skill);color:#fff;}
+.ft-v{background:var(--vrit);color:#fff;}
+
+.fri-cards{display:flex;flex-direction:column;gap:2px;}
+.fc{border:1px solid var(--bd);border-radius:8px;overflow:hidden;background:#fff;transition:box-shadow .2s;}
+.fc:hover{box-shadow:0 4px 20px rgba(0,0,0,.06);}
+
+.fc-head{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:20px 22px;cursor:pointer;user-select:none;
+}
+.fc-head-l{display:flex;align-items:center;gap:14px;}
+.fc-num{
+  font-family:'Bebas Neue',cursive;font-size:28px;line-height:1;
+  color:var(--bd);min-width:34px;transition:color .2s;
+}
+.fc.open .fc-num{color:var(--skill);}
+.fc-name{font-family:'Bebas Neue',cursive;font-size:20px;letter-spacing:.03em;color:var(--ink);}
+.fc-arr{font-size:16px;color:var(--muted);transition:transform .3s;}
+.fc.open .fc-arr{transform:rotate(90deg);}
+
+.fc-body{max-height:0;overflow:hidden;transition:max-height .4s ease;padding:0 22px;}
+.fc.open .fc-body{max-height:280px;padding-bottom:22px;}
+.fc-text{
+  font-size:14px;color:var(--muted);line-height:1.75;
+  border-top:1px solid var(--bd);padding-top:16px;
+}
+.fc-text strong{color:var(--ink);}
+
+/* ════════════════════════════════════════════
+   DEPARTMENTS
+════════════════════════════════════════════ */
+.departments{background:var(--w);padding:72px 0;position:relative;overflow:hidden;border-top:1px solid var(--bd);}
+.dept-glow{display:none;}
+.dept-head{text-align:center;margin-bottom:48px;}
+.dept-head h2{
+  font-family:'Bebas Neue',cursive;
+  font-size:clamp(36px,9vw,80px);color:var(--ink);
+  line-height:.9;letter-spacing:.01em;margin-bottom:16px;
+}
+.dept-head h2 .hs{color:var(--skill);}
+.dept-head p{font-size:15px;color:var(--muted);max-width:480px;margin:0 auto;line-height:1.75;}
+
+/* 2-col on mobile, 4-col on desktop */
+.dept-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+
+.dc{
+  border:1px solid var(--bd);
+  border-radius:10px;padding:32px 20px;text-align:center;
+  background:#fff;
+  transition:background .25s,border-color .25s,transform .2s,box-shadow .2s;
+  position:relative;overflow:hidden;
+}
+.dc::before{
+  content:'';position:absolute;top:0;left:0;right:0;
+  height:3px;background:linear-gradient(90deg,var(--skill),var(--vrit));
+  transform:scaleX(0);transform-origin:left;transition:transform .3s ease;
+}
+.dc:hover::before{transform:scaleX(1);}
+.dc:hover{background:var(--sl);border-color:rgba(54,159,121,.25);transform:translateY(-3px);box-shadow:0 6px 24px rgba(54,159,121,.1);}
+
+.dc-icon{font-size:32px;margin-bottom:14px;display:block;}
+.dc-name{font-family:'Bebas Neue',cursive;font-size:24px;letter-spacing:.04em;color:var(--ink);margin-bottom:12px;}
+.dc-roles{display:flex;flex-direction:column;gap:4px;}
+.dc-roles span{
+  font-family:'Space Mono',monospace;font-size:8px;color:var(--muted);
+  padding:3px 0;
+}
+
+/* ════════════════════════════════════════════
+   TIMELINE — vertical on mobile, horizontal desktop
+════════════════════════════════════════════ */
+.path{background:#fff;padding:72px 0;}
+.path-head{margin-bottom:48px;}
+.path-head h2{
+  font-family:'Bebas Neue',cursive;
+  font-size:clamp(40px,10vw,80px);line-height:.9;letter-spacing:.01em;
+}
+.path-head p{color:var(--muted);font-size:15px;margin-top:14px;max-width:440px;line-height:1.75;}
+
+/* vertical stack on mobile */
+.tl{display:flex;flex-direction:column;gap:0;position:relative;}
+.tl::before{
+  content:'';position:absolute;top:0;bottom:0;left:20px;width:1px;
+  background:linear-gradient(180deg,var(--vrit) 0%,var(--skill) 100%);
+}
+.ti{
+  display:flex;gap:24px;padding:0 0 36px 0;
+  position:relative;z-index:1;
+}
+.ti-left{
+  display:flex;flex-direction:column;align-items:center;flex-shrink:0;
+}
+.ti-dot{
+  width:18px;height:18px;border-radius:50%;
+  border:3px solid #fff;flex-shrink:0;
+  margin-top:4px;transition:transform .2s;
+}
+.ti:hover .ti-dot{transform:scale(1.3);}
+.ti:nth-child(1) .ti-dot{background:var(--vrit);box-shadow:0 0 0 3px var(--vrit);}
+.ti:nth-child(2) .ti-dot{background:#537fe8;box-shadow:0 0 0 3px #537fe8;}
+.ti:nth-child(3) .ti-dot{background:#3d8b6a;box-shadow:0 0 0 3px #3d8b6a;}
+.ti:nth-child(4) .ti-dot{background:var(--skill);box-shadow:0 0 0 3px var(--skill);}
+.ti:nth-child(5) .ti-dot{background:var(--sd);box-shadow:0 0 0 3px var(--sd);}
+.ti-right{padding-top:0;}
+.ti-step{
+  font-family:'Space Mono',monospace;font-size:9px;font-weight:700;
+  letter-spacing:.12em;text-transform:uppercase;
+  color:var(--vrit);margin-bottom:6px;
+}
+.ti:nth-child(4) .ti-step,.ti:nth-child(5) .ti-step{color:var(--skill);}
+.ti-title{
+  font-family:'Bebas Neue',cursive;font-size:20px;letter-spacing:.03em;
+  color:var(--ink);margin-bottom:6px;
+}
+.ti-body{font-size:13px;color:var(--muted);line-height:1.68;}
+
+/* ════════════════════════════════════════════
+   SOCIAL PROOF
+════════════════════════════════════════════ */
+.social{background:var(--off);padding:64px 0;text-align:center;border-top:1px solid var(--bd);}
+.social-lbl{
+  font-family:'Space Mono',monospace;font-size:9px;font-weight:700;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--muted);
+  margin-bottom:36px;
+  display:flex;align-items:center;justify-content:center;gap:14px;
+}
+.social-lbl::before,.social-lbl::after{content:'';flex:1;max-width:60px;height:1px;background:var(--bd);}
+
+.badges{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:10px;margin:0 auto 20px;}
+.badge{
+  font-family:'Space Mono',monospace;font-size:10px;font-weight:700;
+  letter-spacing:.06em;padding:9px 18px;border-radius:4px;
+  transition:transform .18s,box-shadow .18s;cursor:default;
+}
+.badge:hover{transform:translateY(-2px);box-shadow:0 4px 16px rgba(0,0,0,.08);}
+.bv{background:var(--vl);color:var(--vrit);border:1px solid rgba(54,87,231,.18);}
+.bs{background:var(--sl);color:var(--sd);border:1px solid rgba(54,159,121,.18);}
+.bn{background:#fff;color:var(--ink);border:1px solid var(--bd);}
+.social-note{font-family:'Space Mono',monospace;font-size:9px;color:var(--muted);letter-spacing:.06em;}
+
+/* ════════════════════════════════════════════
+   IMPACT
+════════════════════════════════════════════ */
+.impact{background:#fff;padding:72px 0;}
+
+.impact-grid{display:flex;flex-direction:column;gap:48px;}
+
+.impact-l h2{
+  font-family:'Bebas Neue',cursive;
+  font-size:clamp(38px,9vw,72px);line-height:.9;letter-spacing:.01em;margin-bottom:20px;
+}
+.impact-l h2 .hs{color:var(--skill);}
+.impact-l p{color:var(--muted);font-size:15px;line-height:1.8;margin-bottom:28px;}
+
+.impact-list{list-style:none;}
+.impact-list li{
+  display:flex;border-bottom:1px solid var(--bd);overflow:hidden;
+}
+.impact-list li:first-child{border-top:1px solid var(--bd);}
+.il-arr{
+  width:44px;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+  color:var(--skill);font-size:14px;font-weight:700;
+  background:var(--sl);transition:background .2s,color .2s;padding:18px 0;
+}
+.impact-list li:hover .il-arr{background:var(--skill);color:#fff;}
+.il-text{padding:18px 16px;color:var(--ink);font-size:13.5px;line-height:1.6;}
+
+.impact-cards{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.ic{border-radius:10px;padding:28px 24px;transition:transform .2s;}
+.ic:hover{transform:translateY(-3px);}
+.ic.iv{background:var(--vrit);grid-column:span 2;}
+.ic.is{background:var(--skill);}
+.ic.id{background:var(--ink);}
+.ic-n{font-family:'Bebas Neue',cursive;font-size:52px;color:#fff;line-height:1;margin-bottom:6px;}
+.ic-l{font-size:13px;color:rgba(255,255,255,.6);line-height:1.55;}
+
+/* ════════════════════════════════════════════
+   CTA
+════════════════════════════════════════════ */
+.cta{
+  background:var(--sl);padding:80px 0;text-align:center;
+  border-top:1px solid rgba(54,159,121,.2);
+  position:relative;overflow:hidden;
+}
+.cta::before{display:none;}
+.cta-inner{position:relative;z-index:2;padding:0 24px;}
+.cta-ey{
+  font-family:'Space Mono',monospace;font-size:9px;font-weight:700;
+  letter-spacing:.18em;text-transform:uppercase;
+  color:var(--sd);margin-bottom:24px;
+}
+.cta-h2{
+  font-family:'Bebas Neue',cursive;
+  font-size:clamp(52px,13vw,130px);line-height:.84;
+  letter-spacing:.01em;color:var(--ink);margin-bottom:28px;
+}
+.cta-h2 .hs{color:var(--skill);}
+.cta-sub{
+  font-size:15px;color:var(--sd);font-weight:400;
+  max-width:420px;margin:0 auto 48px;line-height:1.78;
+}
+.cta-sub strong{color:var(--ink);}
+
+.cta-form{
+  display:flex;flex-direction:column;gap:0;
+  max-width:460px;margin:0 auto 28px;
+  border:1.5px solid rgba(54,159,121,.35);border-radius:6px;overflow:hidden;
+  box-shadow:0 2px 12px rgba(54,159,121,.1);
+  transition:border-color .3s,box-shadow .3s;
+}
+.cta-form:focus-within{border-color:var(--skill);box-shadow:0 0 0 4px rgba(54,159,121,.15);}
+.cta-input{
+  background:#fff;border:none;
+  padding:16px 20px;color:var(--ink);
+  font-family:'DM Sans',sans-serif;font-size:15px;outline:none;
+  width:100%;
+}
+.cta-input::placeholder{color:#aaa;}
+.cta-btn{
+  background:var(--skill);color:#fff;border:none;
+  padding:16px 28px;cursor:pointer;
+  font-family:'Space Mono',monospace;font-size:10px;
+  font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  width:100%;transition:background .2s;
+}
+.cta-btn:hover{background:var(--sd);}
+
+.cta-or{font-family:'Space Mono',monospace;font-size:9px;color:var(--sd);opacity:.5;letter-spacing:.08em;margin-bottom:16px;}
+.cta-alts{display:flex;justify-content:center;gap:28px;flex-wrap:wrap;}
+.cta-alt{
+  font-family:'Space Mono',monospace;font-size:9px;font-weight:700;
+  letter-spacing:.1em;text-transform:uppercase;
+  color:var(--sd);text-decoration:none;opacity:.7;transition:color .2s,opacity .2s;
+}
+.cta-alt:hover{color:var(--vrit);opacity:1;}
+
+/* ════════════════════════════════════════════
+   FOOTER
+════════════════════════════════════════════ */
+footer{
+  background:var(--smoke);padding:36px 24px;
+  display:flex;flex-direction:column;align-items:center;
+  gap:20px;text-align:center;
+  border-top:1px solid var(--bd);
+}
+.f-brand{display:flex;align-items:center;gap:8px;}
+.f-bar{width:80px;height:2px;background:linear-gradient(90deg,var(--vrit),var(--skill));border-radius:2px;}
+.f-copy{font-family:'Space Mono',monospace;font-size:9px;color:var(--muted);letter-spacing:.06em;}
+
+/* ════════════════════════════════════════════
+   SCROLL REVEAL
+════════════════════════════════════════════ */
+.r{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease;}
+.r.in{opacity:1;transform:translateY(0);}
+.d1{transition-delay:.07s;} .d2{transition-delay:.14s;}
+.d3{transition-delay:.21s;} .d4{transition-delay:.28s;}
+
+/* ════════════════════════════════════════════
+   TABLET — 600px+
+════════════════════════════════════════════ */
+@media(min-width:600px){
+  .wrap{padding:0 40px;}
+  .hero-l{padding:64px 48px 56px;}
+  .si-left,.si-right{padding:52px 44px;}
+  .diff-inner{flex-direction:row;}
+  .diff-col{flex:1;padding:48px 40px;}
+  .diff-col.good{border-top:none;border-left:1px solid var(--bd);}
+  .dept-grid{grid-template-columns:repeat(4,1fr);}
+  .cta-form{flex-direction:row;}
+  .cta-input{flex:1;}
+  .cta-btn{width:auto;}
+  footer{flex-direction:row;justify-content:space-between;text-align:left;padding:36px 40px;}
+}
+
+/* ════════════════════════════════════════════
+   DESKTOP — 900px+
+════════════════════════════════════════════ */
+@media(min-width:900px){
+  nav{padding:18px 64px;}
+  nav.scrolled{padding:12px 64px;}
+  .nav-links{display:flex;align-items:center;gap:32px;}
+  .nav-apply{padding:11px 26px;}
+
+  /* hero two-col layout */
+  .hero{
+    display:grid;grid-template-columns:1.05fr .95fr;
+    flex-direction:unset;min-height:100vh;
+  }
+  .hero-l{padding:96px 64px 80px 80px;}
+  .hero-r{display:flex;}
+  .hero-stats-mobile{display:none;}
+  .hero-gradient-bar{display:none;}
+
+  .section{padding:130px 0;}
+  .story{padding:130px 0;}
+  .compare{padding:130px 0;}
+  .experience{padding:130px 0;}
+  .friday{padding:130px 0;}
+  .departments{padding:130px 0;}
+  .path{padding:130px 0;}
+  .social{padding:90px 0;}
+  .impact{padding:130px 0;}
+  .cta{padding:130px 0;}
+  .diff{padding:100px 0;}
+
+  /* story two-col */
+  .story-card{display:grid;grid-template-columns:5fr 4fr;}
+  .si-right{border-top:none;border-left:1px solid rgba(54,159,121,.2);}
+  .si-left{padding:68px 64px;}
+  .si-right{padding:68px 52px;}
+
+  /* compare side by side */
+  .cmp-cols{display:grid;grid-template-columns:1fr 1fr;gap:0;align-items:start;}
+  .cmp-good::before{display:block;}
+
+  /* experience grid */
+  .exp-grid{
+    display:grid;
+    grid-template-columns:repeat(12,1fr);
+    gap:3px;
+  }
+  .exp-grid .ec{flex:none;}
+  .ec.a{grid-column:1/5;}
+  .ec.b{grid-column:5/9;}
+  .ec.c{grid-column:9/13;}
+  .ec.d{grid-column:1/6;}
+  .ec.e{grid-column:6/9;}
+  .ec.f{grid-column:9/13;}
+
+  /* friday sticky layout */
+  .friday .wrap>div{display:grid;grid-template-columns:1fr 1.6fr;gap:80px;align-items:start;}
+  .fri-head{position:sticky;top:100px;}
+  .fri-head .fri-tags{margin-bottom:0;}
+
+  /* timeline horizontal */
+  .tl{
+    display:grid;grid-template-columns:repeat(5,1fr);
+    flex-direction:unset;gap:0;
+  }
+  .tl::before{
+    top:36px;bottom:auto;left:0;right:0;width:auto;height:1px;
+    background:linear-gradient(90deg,var(--vrit) 0%,var(--skill) 100%);
+  }
+  .ti{flex-direction:column;gap:0;padding:0 20px 0;}
+  .ti-left{flex-direction:row;justify-content:center;align-items:flex-start;}
+  .ti-dot{margin:27px auto 24px;}
+  .ti-right{padding-top:0;}
+
+  /* impact two-col */
+  .impact-grid{flex-direction:unset;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;}
+
+  /* cta form row */
+  .cta-form{flex-direction:row;}
+  .cta-input{flex:1;}
+  .cta-btn{width:auto;}
+}
+
+/* ════════════════════════════════════════════
+   LARGE — 1200px+
+════════════════════════════════════════════ */
+@media(min-width:1200px){
+  .wrap{padding:0 80px;}
+  .hero-l{padding:96px 64px 80px 80px;}
+}
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cur"></div>
+
+<!-- ── NAV ── -->
+<nav id="nav">
+  <div class="nav-brand">
+    <span class="lp lp-v">VRIT</span>
+    <span class="lp lp-x">×</span>
+    <span class="lp lp-s">SkillShikshya</span>
+  </div>
+  <div class="nav-links">
+    <a href="#story" class="nav-link" style="font-family:'Space Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#6b7280;text-decoration:none;">Why Us</a>
+    <a href="#experience" class="nav-link" style="font-family:'Space Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#6b7280;text-decoration:none;">Experience</a>
+    <a href="#path" class="nav-link" style="font-family:'Space Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#6b7280;text-decoration:none;">Journey</a>
+  </div>
+  <a href="#apply" class="nav-apply">Apply Now →</a>
+</nav>
+
+<!-- ── HERO ── -->
+<section class="hero">
+  <div class="hero-l">
+    <div class="tag"><span class="tag-dot"></span>Applications Open — Kathmandu</div>
+
+    <h1 class="hero-h1">
+      You Don't
+      <em class="hs">Just Learn.</em>
+      <em class="hv">You Work.</em>
+    </h1>
+
+    <p class="hero-hook">Other Programs Train You. We Hire You.</p>
+
+    <p class="hero-sub">
+      Every training company teaches you <em style="font-style:italic">about</em> the industry.
+      <strong>SkillShikshya is the industry.</strong> Your mentors didn't just study software — they built Chairlyo, Sanitize Email, and Wasendly. You don't practice on their tools. You work on them.
+    </p>
+
+    <div class="hero-acts">
+      <a href="#apply" class="btn-primary">Claim Your Seat</a>
+      <a href="#story" class="btn-ghost">See How It Works →</a>
+    </div>
+  </div>
+
+  <!-- desktop right panel -->
+  <div class="hero-r">
+    <div class="hr-grid"></div>
+    <div class="hr-ghost" id="hrg">100%</div>
+    <div class="hr-side-text">LEARNING IS WORKING</div>
+    <div class="stats-grid">
+      <div class="sc"><div class="sc-n sv">100%</div><div class="sc-l">Internship<br>Guaranteed</div></div>
+      <div class="sc"><div class="sc-n ss">60+</div><div class="sc-l">Industry<br>Partners</div></div>
+      <div class="sc"><div class="sc-n sv">Paid</div><div class="sc-l">From Day One<br>of Internship</div></div>
+      <div class="sc"><div class="sc-n ss">5+</div><div class="sc-l">Live Vrit<br>Products</div></div>
+    </div>
+    <div class="hr-bar"><div class="hr-bar-t">Learning Is Working Here</div><div class="hr-bar-s">Vrit × SkillShikshya</div></div>
+  </div>
+
+  <!-- mobile stats -->
+  <div class="hero-stats-mobile">
+    <div class="hsm"><div class="hsm-n sv">100%</div><div class="hsm-l">Internship Guaranteed</div></div>
+    <div class="hsm"><div class="hsm-n ss">60+</div><div class="hsm-l">Industry Partners</div></div>
+    <div class="hsm"><div class="hsm-n sv">Paid</div><div class="hsm-l">From Day One</div></div>
+    <div class="hsm"><div class="hsm-n ss">5+</div><div class="hsm-l">Live Vrit Products</div></div>
+  </div>
+  <div class="hero-gradient-bar"><div class="hgb-t">Learning Is Working Here</div><div class="hgb-s">Vrit × SkillShikshya</div></div>
+</section>
+
+<!-- ── MARQUEE ── -->
+<div class="mq-wrap">
+  <div class="mq-row vrit">
+    <span class="mqi">Guaranteed Internship <span class="mqs">✦</span></span>
+    <span class="mqi">Real Vrit Products <span class="mqs">✦</span></span>
+    <span class="mqi">Paid From Day One <span class="mqs">✦</span></span>
+    <span class="mqi">Company ID Card <span class="mqs">✦</span></span>
+    <span class="mqi">Biometric Attendance <span class="mqs">✦</span></span>
+    <span class="mqi">Full-Time Conversion Available <span class="mqs">✦</span></span>
+    <span class="mqi">Guaranteed Internship <span class="mqs">✦</span></span>
+    <span class="mqi">Real Vrit Products <span class="mqs">✦</span></span>
+    <span class="mqi">Paid From Day One <span class="mqs">✦</span></span>
+    <span class="mqi">Company ID Card <span class="mqs">✦</span></span>
+    <span class="mqi">Biometric Attendance <span class="mqs">✦</span></span>
+    <span class="mqi">Full-Time Conversion Available <span class="mqs">✦</span></span>
+  </div>
+</div>
+<div class="mq-wrap">
+  <div class="mq-row dark rev">
+    <span class="mqi">Khalti <span class="mqs">✦</span></span>
+    <span class="mqi">Litmus Cables <span class="mqs">✦</span></span>
+    <span class="mqi">Chairlyo <span class="mqs">✦</span></span>
+    <span class="mqi">Sanitize Email <span class="mqs">✦</span></span>
+    <span class="mqi">Wasendly <span class="mqs">✦</span></span>
+    <span class="mqi">Enrollio <span class="mqs">✦</span></span>
+    <span class="mqi">Open Source · Hackathons · Startup Fest <span class="mqs">✦</span></span>
+    <span class="mqi">Khalti <span class="mqs">✦</span></span>
+    <span class="mqi">Litmus Cables <span class="mqs">✦</span></span>
+    <span class="mqi">Chairlyo <span class="mqs">✦</span></span>
+    <span class="mqi">Sanitize Email <span class="mqs">✦</span></span>
+    <span class="mqi">Wasendly <span class="mqs">✦</span></span>
+    <span class="mqi">Enrollio <span class="mqs">✦</span></span>
+    <span class="mqi">Open Source · Hackathons · Startup Fest <span class="mqs">✦</span></span>
+  </div>
+</div>
+
+<!-- ── DIFF INTERSTITIAL ── -->
+<section class="diff">
+  <div class="wrap">
+    <div class="diff-inner r">
+      <div class="diff-col">
+        <div class="diff-pill dp-bad">Pure Training Company</div>
+        <div class="diff-big">Train You.</div>
+        <div class="diff-desc">Theory. Simulations. A certificate at the end. Trainers who explain what they've read about — not what they've built.</div>
+      </div>
+      <div class="diff-col good">
+        <div class="diff-pill dp-good">SkillShikshya × Vrit</div>
+        <div class="diff-big bright">Hire You.</div>
+        <div class="diff-desc">You join a real company. Work on live products. Get mentored by the engineers who built them. Leave with a paid internship — guaranteed.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── STORY ── -->
+<section class="story" id="story">
+  <div class="wrap">
+    <div class="eyebrow ey-v r">Why This Exists</div>
+    <div class="story-card r">
+      <div class="si-left">
+        <h2 class="si-headline">
+          Colleges Tried.<br>We Decided to<br>Fix It <span class="hs">Ourselves.</span>
+        </h2>
+        <div class="si-body">
+          <p>You deserve to learn from people who actually build. Vrit Technologies has spent years working with national and multinational clients — shipping real software, solving real problems, building real engineers. We know exactly what separates a candidate who gets hired from one who doesn't.</p>
+          <p>The gap isn't intelligence. It isn't effort. It's exposure. <strong>Most graduates never touch a production codebase.</strong> Never join a standup. Never feel the weight of a deadline that matters to a real user.</p>
+          <p>SkillShikshya exists to close that gap — not with simulation, but with reality. Your mentors are the engineers who built Chairlyo, integrated WhatsApp APIs, and debugged live systems for clients. <strong>They teach what they do — because they're still doing it.</strong></p>
+        </div>
+      </div>
+      <div class="si-right">
+        <div>
+          <p class="si-qt">"Your mentor didn't read a textbook about APIs. They wrote the one <span class="hs">Chairlyo runs on.</span> That is the difference."</p>
+          <p class="si-qs">— The SkillShikshya Standard</p>
+        </div>
+        <div class="si-nums">
+          <div class="sin"><div class="sin-n">100%</div><div class="sin-l">Placement guaranteed</div></div>
+          <div class="sin"><div class="sin-n">60+</div><div class="sin-l">Companies trust our grads</div></div>
+          <div class="sin"><div class="sin-n">~100</div><div class="sin-l">Days to paid internship</div></div>
+          <div class="sin"><div class="sin-n" style="color:var(--skill)">∞</div><div class="sin-l">Alumni network</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── COMPARE ── -->
+<section class="compare">
+  <div class="wrap">
+    <div class="cmp-hd r">
+      <div class="eyebrow ey-v" style="justify-content:center">Ask Yourself Before You Enrol Anywhere</div>
+      <h2 class="cmp-title">Who Is <em class="ct-m">Teaching</em> You —<br>and What Have <em class="ct-s">They Built?</em></h2>
+      <p class="cmp-sub">The quality of your training is inseparable from the experience of who delivers it.</p>
+    </div>
+
+    <div class="cmp-cols r rd1">
+      <div class="cmp-col cmp-bad">
+        <div class="cmp-col-hd">
+          <div class="cmp-tag ct-bad">Pure Training Company</div>
+          <div class="cmp-icon">🏫</div>
+          <div class="cmp-name">They Teach Concepts.</div>
+          <div class="cmp-desc">Content designed to be broadly applicable — which means it isn't deeply specific to anything you'll face on day one.</div>
+        </div>
+        <ul class="cmp-list">
+          <li class="cmp-item"><span class="mk mk-bad">✕</span><div><strong>Generic, vendor-neutral content</strong><p>Fits every company in theory. Deeply fits none in practice.</p></div></li>
+          <li class="cmp-item"><span class="mk mk-bad">✕</span><div><strong>Educators, not practitioners</strong><p>They know how to explain. They may not know how to ship under a real deadline.</p></div></li>
+          <li class="cmp-item"><span class="mk mk-bad">✕</span><div><strong>Simulated environments and toy projects</strong><p>Built to demonstrate concepts — not to serve real users or survive a real code review.</p></div></li>
+          <li class="cmp-item"><span class="mk mk-bad">✕</span><div><strong>Curriculum updated slowly</strong><p>The industry moves in months. Training companies move in years.</p></div></li>
+          <li class="cmp-item"><span class="mk mk-bad">✕</span><div><strong>No real product to show</strong><p>They can describe how a production system works. They cannot show you one.</p></div></li>
+          <li class="cmp-item"><span class="mk mk-bad">✕</span><div><strong>A certificate that proves you attended</strong><p>Not that you built anything. Not that anyone relied on your work.</p></div></li>
+        </ul>
+      </div>
+
+      <div class="cmp-col cmp-good">
+        <div class="cmp-col-hd">
+          <div class="cmp-tag ct-good">SkillShikshya × Vrit</div>
+          <div class="cmp-icon">🏢</div>
+          <div class="cmp-name">We Build. You Build With Us.</div>
+          <div class="cmp-desc">Vrit's products are live in the market. Vrit's engineers are your mentors. You train on the actual codebase.</div>
+        </div>
+        <ul class="cmp-list">
+          <li class="cmp-item"><span class="mk mk-good">✓</span><div><strong>Train on actual products in the market</strong><p>Chairlyo, Sanitize Email, Wasendly. Real users. Real consequences when the code breaks.</p></div></li>
+          <li class="cmp-item"><span class="mk mk-good">✓</span><div><strong>Mentors are the people who built the software</strong><p>The engineer who wrote the auth system teaches you auth. No textbook equivalent.</p></div></li>
+          <li class="cmp-item"><span class="mk mk-good">✓</span><div><strong>Production-grade tools from day one</strong><p>Git, Jira, Figma, CI/CD. Your first day at your next job, you already know the tools.</p></div></li>
+          <li class="cmp-item"><span class="mk mk-good">✓</span><div><strong>Your feedback improves the product</strong><p>Training and product development share the same loop — same building, same team.</p></div></li>
+          <li class="cmp-item"><span class="mk mk-good">✓</span><div><strong>Credibility you can't fake</strong><p>"Trained by the team that built Chairlyo." That line opens doors a certificate cannot.</p></div></li>
+          <li class="cmp-item"><span class="mk mk-good">✓</span><div><strong>Training as a pipeline — not a transaction</strong><p>Best graduates join Vrit. The rest get placed with 60+ partners. The ecosystem wants you to succeed.</p></div></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="cmp-verdict r d2">
+      <div class="cmp-vinner">
+        <div class="cv-lbl">The only question worth asking</div>
+        <div class="cv-txt">Would you rather learn surgery from a textbook — or from the surgeon who performs it every day?</div>
+        <a href="#apply" class="btn-primary" style="display:inline-block;margin-top:0;">Train With the Builders →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── EXPERIENCE ── -->
+<section class="experience" id="experience">
+  <div class="wrap">
+    <div class="exp-intro r">
+      <div class="eyebrow ey-w">The Company Experience</div>
+      <h2 class="exp-headline">You Clock In.<br><span class="hv">You Ship.</span><br>You Grow.</h2>
+      <p class="exp-sub" style="margin-top:16px;">Real products. Real users. Engineers who will mentor you the way professionals mentor each other — <strong>honestly, directly, with your growth as the only agenda.</strong></p>
+    </div>
+
+    <div class="exp-grid r d1">
+      <div class="ec solid-v">
+        <div class="ec-icon">🪪</div>
+        <div class="ec-title">Your ID Card. Not a Student Card.</div>
+        <div class="ec-body">Issued on day one. Your name in the Vrit system. You are not enrolled in a program — you are part of the team. You stop thinking like a student. You start thinking like a programmer who has a product to ship and people counting on them.</div>
+      </div>
+      <div class="ec">
+        <div class="ec-icon">📋</div>
+        <div class="ec-title">Standup Every Morning.</div>
+        <div class="ec-body">What did you do? What are you doing? What's blocking you? Three questions that transform how you think about time and accountability. Lived daily — not studied from a slide.</div>
+      </div>
+      <div class="ec">
+        <div class="ec-icon">🚀</div>
+        <div class="ec-title">Chairlyo. Sanitize Email. Wasendly. Yours.</div>
+        <div class="ec-body">Not practice apps. Vrit's live products used by real salons, real businesses, real people. Your code goes into production. Your fixes get shipped.</div>
+      </div>
+      <div class="ec">
+        <div class="ec-icon">🏗️</div>
+        <div class="ec-title">Industry Tools, Not Academic Toys</div>
+        <div class="ec-body">Git, Jira, Figma, Postman. The exact stack used by Vrit's product teams — so when you join a company after this, you won't need a tutorial. You'll be the person who already knows.</div>
+      </div>
+      <div class="ec">
+        <div class="ec-icon">🎓</div>
+        <div class="ec-title">Ceremonies That Mean Something</div>
+        <div class="ec-body">ID distribution day. Mid-program reviews. Farewell. Alumni events. The day you received your ID will be the day you tell people your career began.</div>
+      </div>
+      <div class="ec solid-s">
+        <div class="ec-icon">🔄</div>
+        <div class="ec-title">Full-Time Conversion Path</div>
+        <div class="ec-body">Standout interns don't leave. They stay. Selected students convert their internship into full-time roles at Vrit — skipping the job hunt entirely.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FRIDAY ── -->
+<section class="friday">
+  <div class="wrap">
+    <div>
+      <div class="fri-head r">
+        <div class="eyebrow ey-s">The Weekly Ritual</div>
+        <h2 class="fri-big">Every<br><span class="day">Friday</span><br>Hits Different.</h2>
+        <p class="fri-intro">Technical skills get you an interview. <strong>Everything else gets you the job.</strong> Friday is where we build that everything else.</p>
+        <div class="fri-tags">
+          <span class="ft ft-v">Knowledge Quiz</span>
+          <span class="ft ft-n">CV Workshop</span>
+          <span class="ft ft-n">HR Simulation</span>
+          <span class="ft ft-s">Futsal</span>
+          <span class="ft ft-n">Ethics</span>
+          <span class="ft ft-v">Interview Prep</span>
+          <span class="ft ft-n">Team Bonding</span>
+        </div>
+      </div>
+
+      <div class="fri-cards r d1">
+        <div class="fc open">
+          <div class="fc-head" onclick="tog(this)">
+            <div class="fc-head-l"><span class="fc-num">01</span><span class="fc-name">The Knowledge Quiz</span></div>
+            <span class="fc-arr">›</span>
+          </div>
+          <div class="fc-body"><div class="fc-text">Run every Friday without exception. Not to punish — to expose gaps before an interviewer does. <strong>The quiz is your early warning system.</strong> The students who resist it most are the ones who need it most.</div></div>
+        </div>
+        <div class="fc">
+          <div class="fc-head" onclick="tog(this)">
+            <div class="fc-head-l"><span class="fc-num">02</span><span class="fc-name">CV & Portfolio Sessions</span></div>
+            <span class="fc-arr">›</span>
+          </div>
+          <div class="fc-body"><div class="fc-text">We go line by line. <strong>A CV that tells the truth about real work you actually did</strong> — because you did it here. That's what opens doors. Generic templates get filtered out before a human ever sees them.</div></div>
+        </div>
+        <div class="fc">
+          <div class="fc-head" onclick="tog(this)">
+            <div class="fc-head-l"><span class="fc-num">03</span><span class="fc-name">HR Simulation Rounds</span></div>
+            <span class="fc-arr">›</span>
+          </div>
+          <div class="fc-body"><div class="fc-text">Behavioral rounds. Salary negotiation. Culture-fit interviews. <strong>We run real mock interviews so the actual interview feels familiar, not frightening.</strong> Walk in prepared. Walk out with the offer.</div></div>
+        </div>
+        <div class="fc">
+          <div class="fc-head" onclick="tog(this)">
+            <div class="fc-head-l"><span class="fc-num">04</span><span class="fc-name">Futsal & The Pitch</span></div>
+            <span class="fc-arr">›</span>
+          </div>
+          <div class="fc-body"><div class="fc-text"><strong>The team that knows how to lose a game together, laugh, and come back</strong> — that's the team that ships under pressure. Sportsmanship is a professional skill. We train it like one.</div></div>
+        </div>
+        <div class="fc">
+          <div class="fc-head" onclick="tog(this)">
+            <div class="fc-head-l"><span class="fc-num">05</span><span class="fc-name">Ethics & Professional Culture</span></div>
+            <span class="fc-arr">›</span>
+          </div>
+          <div class="fc-body"><div class="fc-text">How you handle a mistake. How you give feedback. How you disagree without breaking a relationship. <strong>The soft stuff is the hard stuff.</strong> We don't ignore it — we make it a discipline.</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── DEPARTMENTS ── -->
+<section class="departments">
+  <div class="dept-glow"></div>
+  <div class="wrap" style="position:relative;z-index:1;">
+    <div class="dept-head r">
+      <div class="eyebrow ey-w" style="justify-content:center">The Team Structure</div>
+      <h2>You Don't Just Pick a Skill.<br>You Join a <span class="hs">Department.</span></h2>
+      <p>Cross-functional teams. Real roles. The collaboration that only happens when everyone is accountable to the same deadline.</p>
+    </div>
+    <div class="dept-grid">
+      <div class="dc r"><span class="dc-icon">💻</span><div class="dc-name">Development</div><div class="dc-roles"><span>Frontend</span><span>Backend</span><span>Full-Stack</span></div></div>
+      <div class="dc r d1"><span class="dc-icon">🎨</span><div class="dc-name">Design</div><div class="dc-roles"><span>UI / UX</span><span>Brand</span><span>Prototyping</span></div></div>
+      <div class="dc r d2"><span class="dc-icon">🔬</span><div class="dc-name">Quality</div><div class="dc-roles"><span>QA Testing</span><span>Bug Reports</span><span>Assurance</span></div></div>
+      <div class="dc r d3"><span class="dc-icon">📊</span><div class="dc-name">Management</div><div class="dc-roles"><span>Sprint Planning</span><span>Coordination</span><span>Stakeholders</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── TIMELINE ── -->
+<section class="path" id="path">
+  <div class="wrap">
+    <div class="path-head r">
+      <div class="eyebrow ey-v">The Journey</div>
+      <h2>~100 Days.<br>One Career.</h2>
+      <p>Not a course with an end date. A journey with a destination — your first paid role in Nepal's tech industry.</p>
+    </div>
+    <div class="tl r d1">
+      <div class="ti">
+        <div class="ti-left"><div class="ti-dot"></div></div>
+        <div class="ti-right">
+          <div class="ti-step">Week 01</div>
+          <div class="ti-title">You Are Hired.</div>
+          <div class="ti-body">ID issued. Biometric registered. Workstation assigned. You arrive as a professional — not a student hoping to learn.</div>
+        </div>
+      </div>
+      <div class="ti">
+        <div class="ti-left"><div class="ti-dot"></div></div>
+        <div class="ti-right">
+          <div class="ti-step">Weeks 02–06</div>
+          <div class="ti-title">LTW: Learn Like You're Shipping</div>
+          <div class="ti-body">Lecture. Tutorial. Workshop. Every concept exists in the context of a real system. Standups, doubt sessions, tracking. No one coasts.</div>
+        </div>
+      </div>
+      <div class="ti">
+        <div class="ti-left"><div class="ti-dot"></div></div>
+        <div class="ti-right">
+          <div class="ti-step">Weeks 07–12</div>
+          <div class="ti-title">Ship Real Code.</div>
+          <div class="ti-body">Contribute to Vrit's live products. Build 2–3 projects: one for a community, one open-source, one that reflects who you are.</div>
+        </div>
+      </div>
+      <div class="ti">
+        <div class="ti-left"><div class="ti-dot"></div></div>
+        <div class="ti-right">
+          <div class="ti-step">Weeks 13+</div>
+          <div class="ti-title">Paid Internship Begins.</div>
+          <div class="ti-body">Guaranteed. Paid. Inside the same Vrit team you've been working alongside. This is no longer training — this is your job.</div>
+        </div>
+      </div>
+      <div class="ti">
+        <div class="ti-left"><div class="ti-dot"></div></div>
+        <div class="ti-right">
+          <div class="ti-step">Beyond</div>
+          <div class="ti-title">The Career Opens.</div>
+          <div class="ti-body">Junior role. Full-time at Vrit for the best. Alumni network. Startup fest mentorship. The door doesn't close — it multiplies.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── SOCIAL PROOF ── -->
+<section class="social">
+  <div class="wrap">
+    <div class="social-lbl r">Products & Partners Who Trust Our Graduates</div>
+    <div class="badges r d1">
+      <span class="badge bv">Chairlyo</span>
+      <span class="badge bv">Sanitize Email</span>
+      <span class="badge bv">Wasendly</span>
+      <span class="badge bv">Enrollio</span>
+      <span class="badge bv">OrbitChat</span>
+      <span class="badge bs">Khalti</span>
+      <span class="badge bs">Litmus Cables</span>
+      <span class="badge bn">+ 52 more</span>
+    </div>
+    <p class="social-note r d2">Several partners are under NDA. Their names stay confidential. Their trust in our graduates does not.</p>
+  </div>
+</section>
+
+<!-- ── IMPACT ── -->
+<section class="impact">
+  <div class="wrap">
+    <div class="eyebrow ey-s r">More Than an Internship</div>
+    <div class="impact-grid">
+      <div class="impact-l r">
+        <h2>Build Things That <span class="hs">Actually Matter.</span></h2>
+        <p>The most underrated learning tool is a problem that needs solving for someone who isn't you. We build that in. Every student contributes to something real — something that outlasts the program.</p>
+        <ul class="impact-list">
+          <li><span class="il-arr">→</span><span class="il-text"><strong>Code for Impact</strong> — Digital tools for NGOs, schools, and communities that can't afford them otherwise.</span></li>
+          <li><span class="il-arr">→</span><span class="il-text"><strong>YCA Mentorship</strong> — Teach Young Coders Academy students. Teaching is the fastest way to close your own knowledge gaps.</span></li>
+          <li><span class="il-arr">→</span><span class="il-text"><strong>Open Source</strong> — Public GitHub repos as real, reviewable proof of work — not a PDF portfolio.</span></li>
+          <li><span class="il-arr">→</span><span class="il-text"><strong>Hackathons & Startup Fest</strong> — GitHub Field Day, Oktoberfest, startup competitions with Vrit mentorship.</span></li>
+          <li><span class="il-arr">→</span><span class="il-text"><strong>Freelance & Remote Culture</strong> — Software nomadism is a real path. We introduce you to how it works.</span></li>
+          <li><span class="il-arr">→</span><span class="il-text"><strong>Alumni Curriculum Board</strong> — The best graduates come back to shape what the next cohort learns.</span></li>
+        </ul>
+      </div>
+      <div class="impact-cards r d2">
+        <div class="ic iv"><div class="ic-n">3+</div><div class="ic-l">Shipped projects per student — one for a community, one open-source, one that's yours</div></div>
+        <div class="ic is"><div class="ic-n">FOSS</div><div class="ic-l">Open-source community, hackathons & global dev events</div></div>
+        <div class="ic id"><div class="ic-n">1 Yr+</div><div class="ic-l">Alumni return as mentor assistants — teaching what they lived</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA ── -->
+<section class="cta" id="apply">
+  <div class="cta-inner">
+    <div class="cta-ey">Limited Seats — Sankhamul, Kathmandu</div>
+    <h2 class="cta-h2">The Next Batch<br>Starts <span class="hs">Soon.</span></h2>
+    <p class="cta-sub">~100 days from now, you could be a working engineer inside one of Nepal's most respected software companies — with a paid internship, real projects on your GitHub, and a team behind you. <strong>The only requirement is that you start.</strong></p>
+
+    <div class="cta-form">
+      <input class="cta-input" type="email" placeholder="your@email.com" />
+      <button class="cta-btn">Secure My Seat →</button>
+    </div>
+
+    <div class="cta-or">— or talk to us directly —</div>
+    <div class="cta-alts">
+      <a href="#" class="cta-alt">Call Us</a>
+      <a href="#" class="cta-alt">WhatsApp</a>
+      <a href="#" class="cta-alt">Sankhamul Office</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="f-brand">
+    <span class="lp lp-v" style="font-size:10px;">VRIT</span>
+    <span style="color:rgba(255,255,255,.15);font-family:'Bebas Neue',cursive;font-size:16px;">×</span>
+    <span class="lp lp-s" style="font-size:10px;">SkillShikshya</span>
+  </div>
+  <div class="f-bar"></div>
+  <div class="f-copy">© 2025 Vrit Technologies · Sankhamul, Kathmandu</div>
+</footer>
+
+<script>
+/* cursor — desktop only */
+const cur=document.getElementById('cur');
+if(window.matchMedia('(pointer:fine)').matches){
+  document.addEventListener('mousemove',e=>{
+    cur.style.left=e.clientX+'px';cur.style.top=e.clientY+'px';
+  });
+  document.querySelectorAll('a,button,.fc-head,.dc,.sc,.badge,.ec,.cmp-item').forEach(el=>{
+    el.addEventListener('mouseenter',()=>cur.classList.add('big'));
+    el.addEventListener('mouseleave',()=>cur.classList.remove('big'));
+  });
+}else{cur.style.display='none';}
+
+/* nav shrink */
+window.addEventListener('scroll',()=>{
+  document.getElementById('nav').classList.toggle('scrolled',window.scrollY>50);
+},{passive:true});
+
+/* hero ghost parallax — desktop only */
+const hrg=document.getElementById('hrg');
+if(hrg&&window.innerWidth>900){
+  window.addEventListener('scroll',()=>{
+    hrg.style.transform=`translate(-50%,calc(-50% + ${window.scrollY*.12}px))`;
+  },{passive:true});
+}
+
+/* scroll reveal */
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in');});
+},{threshold:.08,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.r').forEach(el=>obs.observe(el));
+
+/* accordion */
+function tog(head){
+  const card=head.closest('.fc');
+  const wasOpen=card.classList.contains('open');
+  document.querySelectorAll('.fc').forEach(c=>c.classList.remove('open'));
+  if(!wasOpen)card.classList.add('open');
+}
+</script>
+</body>
+</html>
